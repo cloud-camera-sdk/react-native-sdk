@@ -28,21 +28,22 @@ yarn add react-native-cloud-camera
 - Cần gọi init để kết nối giữa app bên thứ 3 vs sdk
 
 ```js
-import { initSDK } from 'react-native-cloud-camera';
+import { CloudCamera } from 'react-native-cloud-camera';
 
 // appID được bên mình cung cấp khi đăng ký tích hợp. cài này sẽ có 1 trang riêng để khách hàng vào đăng ký và lấy appID.
-initSDK(appID); 
+CloudCamera.initSDK(appID); 
 
 ```
 
 Note: Trong sdk khi mà nhận đc appID thì mới bắt đầu kết nối socket và thực hiện các action khác.
 
 - Khách hàng có thể dùng một số component có sẵn được cung cấp bới SDK và có thể tuỳ chỉnh styles.
-// Trong SDK cần viết một số component để khách hàng có thể import vào là dùng được luôn và cho tuỳ chỉnh styles như color, padding, margin, width, height....
 
 VD: 
 
 ```js
+// Trong SDK cần viết một số component để khách hàng có thể import vào là dùng được luôn và cho tuỳ chỉnh styles như color, padding, margin, width, height....
+
 import { Cameras, Groups, ... } from 'react-native-cloud-camera';
 
 <Cameras
@@ -63,53 +64,69 @@ import { Cameras, Groups, ... } from 'react-native-cloud-camera';
 
 - init sdk như đã nói ở trên.
   ```js
-    initSDK
+    CloudCamera.initSDK();
   ```
 
 - Lấy danh sách camera
   ```js
-    
+    CloudCamera.getCameras(props); // props: Có thể thêm một số option truyền vào
   ```
 
 - Lấy danh sách group camera
   ```js
-    
+    CloudCamera.getGroups(props);
   ```
 - Lấy danh sách playback camera
   ```js
-    
+    CloudCamera.getPlaybacks(props);
   ```
 
 - Update thông tin của camera
   ```js
-    
+    CloudCamera.updateCamera(props);
   ```
 
 - Thêm camera 
   ```js
-    
+    CloudCamera.addCamera(props);
   ```
 
 - Xoá camera 
   ```js
-    
+    CloudCamera.deleteCamera(props);
   ```
 
 - Tạo group camera 
   ```js
-    
+    CloudCamera.createGroup(props);
   ```
   
 - Xoá group camera 
   ```js
-    
+    CloudCamera.deleteGroup(props);
   ```
   
 - Play stream camera
   ```js
-    
+    CloudCamera.playCamera(props);
   ```
+  
 ### Events listen
+
+- Lắng nghe kết nối sdk thành công hay lỗi, mất kết nối
+  ```js
+    // Lắng nghe sự kiện connect với key Connect 
+    CloudCamera.listener('Connect', (event) => {
+      // todo
+    )
+  ```
+
+- Lắng nghe bản tin update từ socket tự động bắn về như cập nhật trạng thái của camera, gateway...
+  ```js
+    CloudCamera.listener('Update', (event) => {
+      // todo
+    )
+  ```
 
 ## Contributing
 
