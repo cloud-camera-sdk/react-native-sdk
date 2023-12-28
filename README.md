@@ -124,10 +124,10 @@ import { Cameras, Groups, Gateways... } from 'react-native-cloud-camera';
     // Lắng nghe sự kiện connect với key Connect 
     CloudCamera.listener('Connect', (event) => {
       // trong event sẽ có type, message.
-      type Connecting -> message đang kết nối
-      type Connected -> message Kết nối thành công
-      type DisConnect -> message Mất kết nối
-      type Error -> message Thông báo lỗi
+      type Connecting -> đang kết nối
+      type Connected -> Kết nối thành công
+      type DisConnect -> Mất kết nối
+      type Error -> Thông báo lỗi
     )
   ```
 
