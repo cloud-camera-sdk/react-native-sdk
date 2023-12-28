@@ -44,7 +44,7 @@ VD:
 ```js
 // Trong SDK cần viết một số component để khách hàng có thể import vào là dùng được luôn và cho tuỳ chỉnh styles như color, padding, margin, width, height....
 
-import { Cameras, Groups, ... } from 'react-native-cloud-camera';
+import { Cameras, Groups, Gateways... } from 'react-native-cloud-camera';
 
 <Cameras
   backgroundColor    // Chỉnh sửa màu nền
@@ -59,6 +59,7 @@ import { Cameras, Groups, ... } from 'react-native-cloud-camera';
 
 
 ## API
+- Nếu như khách hàng k dùng các component có sẵn thì có thể gọi các method dưới đây để lấy data và hiển thị.
 
 ### Methods
 
