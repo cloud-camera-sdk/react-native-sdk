@@ -30,8 +30,8 @@ yarn add react-native-cloud-camera
 ```js
 import { CloudCamera } from 'react-native-cloud-camera';
 
-// appID được bên mình cung cấp khi đăng ký tích hợp. cài này sẽ có 1 trang riêng để khách hàng vào đăng ký và lấy appID.
-CloudCamera.initSDK(appID); 
+// appID được bên mình cung cấp khi đăng ký tích hợp. cài này sẽ có 1 trang riêng để khách hàng vào đăng ký và lấy appID, secretKey.
+CloudCamera.initSDK(appID, secretKey); 
 
 ```
 
@@ -81,6 +81,11 @@ import { Cameras, Groups, Gateways... } from 'react-native-cloud-camera';
   ```js
     CloudCamera.getPlaybacks(props);
   ```
+  
+- Get thông tin của 1 camera
+  ```js
+    CloudCamera.getCameraDetail(props);
+  ```
 
 - Update thông tin của camera
   ```js
@@ -118,14 +123,63 @@ import { Cameras, Groups, Gateways... } from 'react-native-cloud-camera';
   ```js
     // Lắng nghe sự kiện connect với key Connect 
     CloudCamera.listener('Connect', (event) => {
-      // todo
+      // trong event sẽ có type, message.
+      type Connecting -> message đang kết nối
+      type Connected -> message Kết nối thành công
+      type DisConnect -> message Mất kết nối
+      type Error -> message Thông báo lỗi
     )
   ```
 
 - Lắng nghe bản tin update từ socket tự động bắn về như cập nhật trạng thái của camera, gateway...
   ```js
     CloudCamera.listener('Update', (event) => {
-      // todo
+      // Một số event như
+      DEVICE_CHANGE_STATE: Cập nhật trạng thái hoạt động hay không của camera, gateway.
+      ...
+    )
+  ```
+#### Note
+Ý tưởng chỗ này là khi người dùng gọi 1 method vd như CloudCamera.getCameras(props) thì có thể chờ đợi kết quả trả về luôn khi gọi method. Nếu không thì người dùng có thể lắng nghe data từ event bên dưới.
+
+- Lắng nghe bản tin liên quan đến camera từ socket bắn về
+  ```js
+    CloudCamera.listener('Camera', (event) => {
+      // Một số event như
+      LIST_CAMERA
+      ADD_CAMERA
+      DELETE_CAMERA
+      UPDATE_CAMERA
+      ...
+    )
+  ```
+
+- Lắng nghe bản tin liên quan đến group camera từ socket bắn về
+  ```js
+    CloudCamera.listener('Group', (event) => {
+      // Một số event như
+      LIST_GROUP
+      ADD_GROUP
+      DELETE_GROUP
+      UPDATE_GROUP
+      ...
+    )
+  ```
+- Lắng nghe bản tin liên quan đến playback camera từ socket bắn về
+  ```js
+    CloudCamera.listener('Group', (event) => {
+      // Một số event như
+      LIST_PLAYBACK
+      ...
+    )
+  ```
+- Lắng nghe bản tin liên quan đến play camera
+  ```js
+    CloudCamera.listener('Group', (event) => {
+      // Một số event như
+      START_STREAM_CAMERA
+      STOP_STREAM_CAMERA
+      ...
     )
   ```
 
