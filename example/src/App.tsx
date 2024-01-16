@@ -26,7 +26,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => CloudCamera.initSDK('init sdk')}>
-        <Text>Click</Text>
+        <Text>Connect</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => CloudCamera.getCameras()}>
+        <Text>List cameras</Text>
       </TouchableOpacity>
     </View>
   );

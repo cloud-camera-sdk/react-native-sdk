@@ -2,8 +2,6 @@ import type { Action } from './pubsub-action';
 
 type ActionFunc = (action: Action) => void;
 
-// export type PublishKey = 'general' | 'object';
-
 class PubSub {
   private _dispatcher: Record<string, ActionFunc[]> = {};
   private _store: Record<string, any> = {};

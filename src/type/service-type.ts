@@ -1,0 +1,10 @@
+export const LIST_ALL_DEVICE_BY_PAGE = 19;
+export const LIST_DEVICE_GROUP_BY_PAGE = 324;
+export const GET_DEVICE_INFO_EXTRA = 49;
+export const ADD_DEVICE = 22;
+export const UPDATE_DEVICE = 29;
+export const REMOVE_DEVICE = 39;
+export const REMOVE_DEVICE_GROUP = 323;
+export const LIST_DEVICE_GROUP = 320;
+export const ADD_DEVICE_GROUP = 321;
+export const UPDATE_DEVICE_GROUP = 322;
