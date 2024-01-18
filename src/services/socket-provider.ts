@@ -9,7 +9,7 @@ import {
   dataUpdateCamera,
   type UpdateCameraType,
   dataDeleteCamera,
-} from './method-camera';
+} from '../method/method-camera';
 import {
   dataDeleteGroup,
   dataGetGroups,
@@ -17,7 +17,18 @@ import {
   type GroupsType,
   dataCreateGroup,
   dataUpdateGroup,
-} from './method-group';
+} from '../method/method-group';
+import {
+  dataGatewayDetail,
+  dataGetGateways,
+  type GatewayProps,
+  type GatewaysType,
+} from '../method/method-gateway';
+import {
+  requestPlaybacks,
+  type PlaybackProps,
+  getIPAddress,
+} from '../method/method-playback';
 
 // const connectionConfig = {
 //   jsonp: false,
@@ -94,6 +105,29 @@ class SocketProvider {
     this.sendEvent(data);
   };
   // ---------------------------------------------
+
+  // ---------- METHOD GATEWAY ----------------
+  getGateways = (props?: GatewaysType) => {
+    const data = dataGetGateways(props);
+    this.sendEvent(data);
+  };
+
+  getGatewayDetail = (props: GatewayProps) => {
+    const data = dataGatewayDetail(props);
+    this.sendEvent(data);
+  };
+  // ---------------------------------------------
+
+  // ---------- METHOD PLAYBACK ----------------
+  getPlaybacks = (props: PlaybackProps) => {
+    const data = requestPlaybacks(props);
+    this.sendEvent(data);
+  };
+
+  getVideoPlayback = (playbackId: string | number) => {
+    const data = getIPAddress(playbackId);
+    this.sendEvent(data);
+  };
 }
 
 export const CloudCamera = new SocketProvider();

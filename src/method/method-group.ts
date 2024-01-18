@@ -104,3 +104,18 @@ export const dataUpdateGroup = (props: UpdateGroupType) => {
   };
   return dataObj;
 };
+
+// export const requestGroupDetail = (groupId: string | number) => {
+//   const param = {
+//     namespace: global.namespace,
+//     id: groupId,
+//   };
+//   const dataObj = {
+//     appServiceType: REMOVE_DEVICE_GROUP,
+//     requestId: new Date().getTime(),
+//     body: encryption(JSON.stringify(param)),
+//     checksum: checksum(JSON.stringify(param)),
+//   };
+
+//   return dataObj;
+// };

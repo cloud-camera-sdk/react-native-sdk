@@ -8,3 +8,5 @@ export const REMOVE_DEVICE_GROUP = 323;
 export const LIST_DEVICE_GROUP = 320;
 export const ADD_DEVICE_GROUP = 321;
 export const UPDATE_DEVICE_GROUP = 322;
+export const LIST_CAMERA_STORAGE_FILE = 212;
+export const GENERATE_LINK_STORAGE_FILE = 213;
